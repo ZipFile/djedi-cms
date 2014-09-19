@@ -29,6 +29,10 @@ class APIView(View):
         except Http404:
             raise
         except Exception as e:
+            # Solve a lot of debugging pain
+            if not hasattr(e, '__module__') or e.__module__ in ('builtins', 'exceptions'):
+                raise
+            # FIXME: Make errors more verbose
             return HttpResponseBadRequest(e)
 
     def get_post_data(self, request):
