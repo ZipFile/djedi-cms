@@ -12,7 +12,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'djedi.middleware.translation.DjediTranslationMiddleware',
+    'djedi.middleware.DjediCommonMiddleware',
+    'djedi.middleware.DjediTranslationMiddleware',
 )
 
 INSTALLED_APPS = [
