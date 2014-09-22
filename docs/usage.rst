@@ -11,8 +11,9 @@ The key is represented by a :ref:`uri` and the value is the content, together th
 Template tags
 -------------
 
-Load ``djedi_tags`` in a template and use the ``node`` or ``blocknode`` tags
-Place ``djedi_toolbar`` to get fancy inline admin interface
+Load ``djedi_tags`` in a template and use the ``node`` or ``blocknode`` tags.
+
+Place ``djedi_toolbar`` to get fancy inline admin interface.
 
 .. code-block:: django
 
