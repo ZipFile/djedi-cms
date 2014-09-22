@@ -1,5 +1,5 @@
 from django.core.urlresolvers import reverse
-from djedi.utils.encoding import smart_unicode
+from djedi.utils.encoding import smart_str
 from djedi.tests.base import ClientTest
 
 
@@ -8,13 +8,13 @@ class PanelTest(ClientTest):
     def test_embed(self):
         url = reverse('index')
         response = self.client.get(url)
-        self.assertIn(u'Djedi Test', smart_unicode(response.content))
-        self.assertIn(u'window.DJEDI_NODES', smart_unicode(response.content))
+        self.assertIn(b'Djedi Test', response.content)
+        self.assertIn(b'window.DJEDI_NODES', response.content)
 
     def test_cms(self):
         url = reverse('admin:djedi:cms')
         response = self.client.get(url)
-        self.assertIn(u'<title>djedi cms</title>', smart_unicode(response.content))
+        self.assertIn(b'<title>djedi cms</title>', response.content)
 
     def test_django_admin(self):
         # Patch django admin index
@@ -24,8 +24,8 @@ class PanelTest(ClientTest):
 
         url = reverse('admin:index')
         response = self.client.get(url)
-        cms_url = reverse('admin:djedi:cms')
-        self.assertIn(u'<a href="%s">CMS</a>' % cms_url, smart_unicode(response.content))
+        link = ''.join(('<a href="', reverse('admin:djedi:cms'), '">CMS</a>'))
+        self.assertIn(smart_str(link), response.content)
 
         # Rollback patch
         AdminLogNode.render = _render
