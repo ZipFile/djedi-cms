@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.views.generic import TemplateView
 
 try:
     from django.conf.urls import patterns, include, url
@@ -10,5 +10,5 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url(r'^$', lambda r: render_to_response('index.html'), name='index'),
+                       url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
                        url(r'^adm1n/', include(admin.site.urls)))

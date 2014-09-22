@@ -1,9 +1,9 @@
-from .admin import DjediAdminMiddleware
-from .mixins import TranslationMixin
+import cio
+from django.utils import translation
 
 
-class DjediTranslationMiddleware(DjediAdminMiddleware, TranslationMixin):
+class DjediTranslationMiddleware(object):
 
     def process_request(self, request):
-        super(DjediTranslationMiddleware, self).process_request(request)
-        self.activate_language()
+        language = translation.get_language()
+        cio.env.push_state(i18n=language)

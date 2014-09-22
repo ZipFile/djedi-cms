@@ -23,8 +23,6 @@ INSTALLED_APPS = [
     'djedi'
 ]
 
-TEMPLATE_CONTEXT_PROCESSORS = []
-
 ROOT = os.path.dirname(__file__)
 MEDIA_ROOT = os.path.join(ROOT, 'media')
 STATIC_ROOT = os.path.join(ROOT, 'static')

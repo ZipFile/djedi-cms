@@ -12,11 +12,13 @@ Template tags
 -------------
 
 Load ``djedi_tags`` in a template and use the ``node`` or ``blocknode`` tags
+Place ``djedi_toolbar`` to get fancy inline admin interface
 
 .. code-block:: django
 
     {% load djedi_tags %}
     <body>
+        {% djedi_toolbar %}
         <h1>{% node 'page/home/title.txt' default='Djedi' %}</h1>
 
         {% node 'page/home/logo.img' %}

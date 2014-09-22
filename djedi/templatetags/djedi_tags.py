@@ -1,9 +1,13 @@
 import cio
+import json
 import six
 import textwrap
 from django import template
 from django.template import TemplateSyntaxError
 from django.template.base import parse_bits
+from django.template.loader import render_to_string
+from djedi.auth import has_permission
+from cio.pipeline import pipeline
 from .template import register
 
 
@@ -74,5 +78,20 @@ class BlockNode(template.Node):
         edit = resolved_kwargs.pop('edit', True)
 
         return render_node(self.node, context=resolved_kwargs, edit=edit)
+
+
+@register.simple_tag(takes_context=True)
+def djedi_toolbar(context):
+    user = context.get('user', None)
+
+    # Validate user permissions
+    if not has_permission(user):
+        return ''
+
+    defaults = dict((node.uri.clone(version=None), node.initial) for node in pipeline.history.list('get'))
+
+    return render_to_string('djedi/cms/embed.html', {
+        'json_nodes': json.dumps(defaults),
+    })
 
 register.tag('blocknode', BlockNode.tag)
