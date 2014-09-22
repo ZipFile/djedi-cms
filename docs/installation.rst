@@ -34,8 +34,10 @@ Add ``djedi`` to ``INSTALLED_APPS`` and suitable djedi middleware to ``MIDDLEWAR
     )
 
     MIDDLEWARE_CLASSES = (
-        'djedi.middleware.DjediCommonMiddleware',
         # ...
+        # Enable DjediCMS
+        'djedi.middleware.DjediCommonMiddleware',
+        # Enable i18n
         'django.middleware.locale.LocaleMiddleware',
         'djedi.middleware.DjediTranslationMiddleware',
         # ...
