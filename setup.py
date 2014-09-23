@@ -4,7 +4,6 @@ from sys import version_info
 
 
 install_requires = [
-    'six',
     'Django >= 1.4',
     'content-io >= 1.0',
     'simplejson >= 3.2.0'

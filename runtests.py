@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
-import six
+from django.utils import six
 
 if six.PY2:
     import unittest2 as unittest

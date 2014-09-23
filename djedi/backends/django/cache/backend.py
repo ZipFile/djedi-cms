@@ -1,5 +1,5 @@
-import six
 from django.core.cache import InvalidCacheBackendError
+from django.utils import six
 from djedi.utils.encoding import smart_str, smart_unicode
 from cio.backends.base import CacheBackend
 

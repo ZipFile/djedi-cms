@@ -1,5 +1,5 @@
 import json
-import six
+from django.utils import six
 from django.utils.html import escape
 from cio.plugins.base import BasePlugin
 from django.core.files.uploadedfile import InMemoryUploadedFile

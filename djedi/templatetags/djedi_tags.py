@@ -1,11 +1,11 @@
 import cio
 import json
-import six
 import textwrap
 from django import template
 from django.template import TemplateSyntaxError
 from django.template.base import parse_bits
 from django.template.loader import render_to_string
+from django.utils import six
 from djedi.auth import has_permission
 from cio.pipeline import pipeline
 from .template import register
