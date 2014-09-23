@@ -85,8 +85,10 @@ def djedi_toolbar(context):
     user = context.get('user', None)
 
     # Validate user permissions
-    if not has_permission(user):
+    if not has_permission(user) or context.get('djedi_toolbar', False):
         return ''
+
+    context['djedi_toolbar'] = True
 
     defaults = dict((node.uri.clone(version=None), node.initial) for node in pipeline.history.list('get'))
 
